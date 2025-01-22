@@ -1,3 +1,4 @@
+const { response } = require("express");
 const User = require("../models/user-model.js");
 
 const home = async (req, res) => {
@@ -70,4 +71,16 @@ const login = async (req, res) => {
     }
 };
 
-module.exports = { home, register, login };
+const user = async (req, res) => {
+
+    try {
+        const userData = req.user;
+        
+    } catch (error) {
+        console.log("Error from user route: ", error);
+        
+    }
+
+};
+
+module.exports = { home, register, login, user };
