@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const authRoute = require("./routes/auth-route.js")
 const contactRoute = require("./routes/contact-route.js")
+const serviceRoute = require("./routes/service-route.js")
 const connectDb = require("./utils/DB.js")
 const cors = require("cors")
 
@@ -18,6 +19,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRoute);
 app.use("/api/form", contactRoute);
+app.use("/api/data", serviceRoute)
 
 
 const PORT = 5000;
