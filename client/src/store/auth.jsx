@@ -6,6 +6,7 @@ export const AuthProvider = ({ children }) => {
 
     const [token, setToken] = useState(localStorage.getItem('token'));
     const [user, setUser] = useState("");
+    const [course, setCourse] = useState([]);
 
     const StoreTokenInLS = (serverToken) => {
         return localStorage.setItem("token", serverToken);
@@ -41,14 +42,44 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-    useEffect(
-        () => {
-            userAuthentication();     
-        },
-        []
-    );
+    const getServices = async () => {
+        
+        
+        try {
+            const response = await fetch("http://localhost:5000/api/data/service",
+                {
+                    method: "GET",
+                }
+            )
+            
+            if(!response)
+            {
+                console.log("services: No response from server");
+                return ;
+            }
 
-    return <AuthContext.Provider value={ { StoreTokenInLS, LogoutUser, isLoggedIn, user } }>
+            if(response.ok)
+            {
+                const data = await response.json();
+                // console.log(data.msg);
+                
+                setCourse(data.msg);
+            }
+        } catch (error) {
+            console.log("fetching services failed", error);
+        }
+    };
+
+    useEffect(() => {
+        getServices();
+    }, []);  // Only run once, when the component mounts.
+    
+    useEffect(() => {
+        userAuthentication();
+    }, [token]);  // Run when token changes.
+    
+
+    return <AuthContext.Provider value={ { StoreTokenInLS, LogoutUser, isLoggedIn, user, course } }>
             {children}
         </AuthContext.Provider>
 }

@@ -307,6 +307,56 @@ a.active {
 
 /* End registration */
 
+/* services */
+
+.section-services {
+  & .container:first-child {
+    padding: 0;
+  }
+
+  & .grid{
+    display: grid;
+  }
+
+  & .grid-three-cols {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3.2rem;
+  }
+
+  & .card {
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+    border: 0.2rem solid var(--helper-color);
+    height: 100%;
+
+    & .card-img {
+      text-align: center;
+      & img {
+        width: 70%;
+        filter: drop-shadow(0 0 2rem 2rem #fff);
+        -webkit-filter: drop-shadow(0 0 2rem 2rem #fff);
+      }
+    }
+
+    & .card-details {
+      padding: 1.4rem;
+
+      & .grid p {
+        font-size: 1.4rem;
+      }
+
+      & h2 {
+        font-size: 3.2rem;
+        margin: 1.2rem 0 2.4rem 0;
+      }
+    }
+  }
+}
+
+/* End services */
+
+
 /* media query section css */
 
 @media (width <= 998px) {
