@@ -14,7 +14,7 @@ export const Navbar = () => {
                     <ul>
                         <li><NavLink to="/" > Home </NavLink></li>
                         <li><NavLink to="/about" > About </NavLink></li>
-                        <li><NavLink to="/service" > Service </NavLink></li>
+                        <li><NavLink to="/service" > Course </NavLink></li>
                         <li><NavLink to="/contact" > Contact </NavLink></li>
                         {isLoggedIn
                         ?<li><NavLink to="/logout" > Logout </NavLink></li>
